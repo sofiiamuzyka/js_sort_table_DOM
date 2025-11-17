@@ -7,11 +7,11 @@ const rowsNoFirst = [...document.querySelectorAll('tbody tr')];
 
 headers.forEach((header) => {
   header.addEventListener('click', () => {
-    let row;
-
-    if (rowsNoFirst.length !== 0) {
-      row = rowsNoFirst[0];
+    if (rowsNoFirst.length === 0) {
+      return;
     }
+
+    const row = rowsNoFirst[0];
 
     const value = row.cells[header.cellIndex].textContent;
     const string = value.replace(/[^0-9.-]/g, '');
