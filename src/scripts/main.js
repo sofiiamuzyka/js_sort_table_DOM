@@ -3,13 +3,16 @@
 // write code here
 const headers = [...document.querySelectorAll('th')];
 
-const table = document.querySelector('table');
-const allRows = table.rows;
-const rowsNoFirst = Array.from(allRows).slice(1, allRows.length - 1);
+const rowsNoFirst = [...document.querySelectorAll('tbody tr')];
 
 headers.forEach((header) => {
   header.addEventListener('click', () => {
-    const row = rowsNoFirst[0];
+    let row;
+
+    if (rowsNoFirst.length !== 0) {
+      row = rowsNoFirst[0];
+    }
+
     const value = row.cells[header.cellIndex].textContent;
     const string = value.replace(/[^0-9.-]/g, '');
 
